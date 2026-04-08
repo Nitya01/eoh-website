@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EOH 2026 Booths — I-MRSEC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F5F0EB;
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 16px 20px 8px;
+      color: #E84A27;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .back-link:hover { opacity: 0.75; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #13294B 0%, #1a3a6a 60%, #0f2040 100%);
+      padding: 48px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: #E84A27;
+      opacity: 0.12;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -40px; left: -40px;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: #E84A27;
+      opacity: 0.08;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #E84A27;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 8vw, 46px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      max-width: 380px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── Carousel wrapper ── */
+    .carousel-section {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .carousel-track-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── Each card — all same fixed size ── */
+    .booth-card {
+      min-width: 100%;
+      width: 100%;
+      /* fixed height so every card is identical */
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 36px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* alternating colour themes */
+    .booth-card:nth-child(odd)  { background: #fff; border-left: 6px solid #E84A27; }
+    .booth-card:nth-child(even) { background: #fafbff; border-left: 6px solid #13294B; }
+
+    .card-badge {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: #E84A27;
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+    .booth-card:nth-child(even) .card-badge { background: #13294B; }
+
+    .card-emoji {
+      font-size: 52px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(22px, 5vw, 28px);
+      font-weight: 800;
+      color: #13294B;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .card-tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: #555;
+      line-height: 1.65;
+      max-width: 440px;
+    }
+
+    /* ── Counter "1 / 5" ── */
+    .carousel-counter {
+      text-align: center;
+      margin-top: 22px;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #999;
+      letter-spacing: 1px;
+    }
+    .carousel-counter span { color: #E84A27; }
+
+    /* ── Dot indicators ── */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      border: none;
+      padding: 0;
+    }
+    .dot.active {
+      background: #E84A27;
+      transform: scale(1.35);
+    }
+
+    /* ── Prev / Next arrow buttons ── */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+    }
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #E84A27;
+      background: #fff;
+      color: #E84A27;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(232,74,39,0.12);
+      flex-shrink: 0;
+    }
+    .nav-btn:hover { background: #E84A27; color: #fff; }
+    .nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .nav-btn:disabled:hover { background: #fff; color: #E84A27; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 11px;
+      color: #999;
+      border-top: 1px solid #e5e0da;
+    }
+
+    /* ── Mobile tweaks ── */
+    @media (max-width: 480px) {
+      .booth-card { padding: 32px 24px; min-height: 300px; }
+      .card-emoji { font-size: 42px; }
+      .card-title { font-size: 22px; }
+      .card-tagline { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-link" href="index.html">&#8592; Back to home</a>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">Illinois MRSEC · Engineering Open House 2026</div>
+      <h1>Find Us at<br/><span style="color:#E84A27;">EOH 2026</span></h1>
+      <p class="hero-sub">5 booths. 5 wild experiments. All free — come try them!</p>
+    </div>
+  </div>
+
+  <!-- CAROUSEL -->
+  <div class="carousel-section">
+
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="track">
+
+        <!-- Card 1 -->
+        <div class="booth-card">
+          <div class="card-badge">BOOTH #96</div>
+          <div class="card-emoji">☀️⚡</div>
+          <div class="card-title">Solar Energy &amp; Circuits</div>
+          <div class="card-tagline">Turn sunlight into electricity. Wire up your own mini solar circuit and watch the energy flow — no batteries needed.</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="booth-card">
+          <div class="card-badge">BOOTH #97</div>
+          <div class="card-emoji">🔦✨</div>
+          <div class="card-title">Glow in the Dark Laser Show</div>
+          <div class="card-tagline">Program a laser light show and discover how light interacts with special glowing materials. Part science, part spectacle.</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="booth-card">
+          <div class="card-badge">BOOTH #99</div>
+          <div class="card-emoji">💡🔬</div>
+          <div class="card-title">Materials &amp; Lights</div>
+          <div class="card-tagline">Shine light through mystery materials and uncover what's hiding inside. What you see depends entirely on what they're made of.</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="booth-card">
+          <div class="card-badge">BOOTH #100</div>
+          <div class="card-emoji">🌀🔳</div>
+          <div class="card-title">Moiré Patterns</div>
+          <div class="card-tagline">Two simple grids. Infinite wild patterns. Explore the visual math behind moiré — and why it matters at the atomic scale.</div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="booth-card">
+          <div class="card-badge">BOOTH #151</div>
+          <div class="card-emoji">🔊🧲</div>
+          <div class="card-title">Sound Waves &amp; Magnetism</div>
+          <div class="card-tagline">See sound. Feel magnetism. Explore what happens when acoustics meets materials science — and how researchers use both.</div>
+        </div>
+
+      </div><!-- /track -->
+    </div><!-- /wrap -->
+
+    <!-- Counter -->
+    <div class="carousel-counter" id="counter">
+      <span id="current">1</span> / 5
+    </div>
+
+    <!-- Nav buttons + dots -->
+    <div class="nav-buttons">
+      <button class="nav-btn" id="prevBtn" onclick="move(-1)" disabled>&#8592;</button>
+      <div class="dots" id="dots"></div>
+      <button class="nav-btn" id="nextBtn" onclick="move(1)">&#8594;</button>
+    </div>
+
+  </div><!-- /carousel-section -->
+
+  <div class="footer">
+    Illinois Materials Research Science and Engineering Center &middot; NSF Award DMR-2309037
+  </div>
+
+  <script>
+    const total = 5;
+    let current = 0;
+
+    const track   = document.getElementById('track');
+    const counter = document.getElementById('current');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('dots');
+
+    // Build dots
+    for (let i = 0; i < total; i++) {
+      const d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(d);
+    }
+
+    function goTo(idx) {
+      current = idx;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      counter.textContent = current + 1;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+      document.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function move(dir) {
+      const next = current + dir;
+      if (next >= 0 && next < total) goTo(next);
+    }
+
+    // Swipe / touch support
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) move(diff > 0 ? 1 : -1);
+    });
+
+    // Keyboard support
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') move(1);
+      if (e.key === 'ArrowLeft')  move(-1);
+    });
+  </script>
+
+</body>
+</html>

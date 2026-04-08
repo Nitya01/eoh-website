@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Outreach — I-MRSEC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F5F0EB;
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* Back link */
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 16px 20px 8px;
+      max-width: 640px;
+      margin: 0 auto;
+      color: #E84A27;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .back-link:hover { opacity: 0.8; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #13294B 0%, #1a3a6a 60%, #0f2040 100%);
+      padding: 52px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: #E84A27;
+      opacity: 0.12;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: #E84A27;
+      opacity: 0.08;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #E84A27;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 7vw, 42px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* Content wrapper */
+    .content {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #E84A27;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #13294B;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .section p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    /* Photo grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .photo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .photo-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .photo-caption {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: #777;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+      margin: 40px 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 20px 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .hero { padding: 36px 20px 44px; }
+      .photo-grid { gap: 10px; }
+      .section h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-link" href="index.html">&#8592; Back to home</a>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-label">Illinois MRSEC · School Outreach</div>
+      <h1>Science Meets<br/>the Classroom</h1>
+      <p class="hero-sub">I-MRSEC brings real materials science research to local schools — from microscopes to Arduino lasers to VR molecules.</p>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Section 1: Creative Materials Program -->
+    <div class="section">
+      <div class="section-label">Program 1</div>
+      <h2>Creative Materials Program<br/><span style="font-weight:500;font-size:18px;color:#555;">Franklin STEAM Academy</span></h2>
+      <p>The I-MRSEC has an annual outreach program at local public middle school Franklin STEAM Academy. Over 7–8 weeks, 7th and 8th grade classes receive visits from I-MRSEC faculty, postdocs, and students several times per week — bringing engaging, hands-on lessons in materials science.</p>
+      <p>Interspersed with the visits are "creative" days where students express materials science concepts through the arts: drawing, comics, and poetry. The program also includes a field trip to the Materials Research Lab on the Illinois campus.</p>
+
+      <div class="photo-grid">
+        <div class="photo-item">
+          <img src="IMG_4233.jpeg" alt="Hands-on microscopy" />
+          <div class="photo-caption">Hands-on microscopy</div>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_4458.jpeg" alt="Circuit experiments" />
+          <div class="photo-caption">Circuit experiments</div>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_4487.jpeg" alt="VR molecules demo" />
+          <div class="photo-caption">VR molecules demo</div>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_4689.jpeg" alt="Field trip to MRL" />
+          <div class="photo-caption">Field trip to MRL</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 2: IMAGINE STEM -->
+    <div class="section">
+      <div class="section-label">Program 2</div>
+      <h2>IMAGINE STEM</h2>
+      <p>IMAGINE STEM is another I-MRSEC outreach initiative that introduces young students to the excitement of materials research. Through interactive demos, coding activities, and lab visits, students discover how everyday materials are engineered at the atomic level.</p>
+
+      <div class="photo-grid">
+        <div class="photo-item">
+          <img src="IMG_4772.jpeg" alt="Programming lasers with Arduino" />
+          <div class="photo-caption">Programming lasers with Arduino</div>
+        </div>
+        <div class="photo-item">
+          <img src="IMG_4796.jpeg" alt="Building with materials science" />
+          <div class="photo-caption">Building with materials science</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Illinois Materials Research Science and Engineering Center &middot; NSF Award DMR-2309037
+  </footer>
+
+</body>
+</html>
