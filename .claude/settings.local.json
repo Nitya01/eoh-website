@@ -5,7 +5,8 @@
       "Bash(sed -n '48,60p' \"C:/Users/nitya/Downloads/mrsec-eoh-deploy/mrsec-eoh-deploy/index.html\")",
       "Bash(sed -n '128,160p' \"C:/Users/nitya/Downloads/mrsec-eoh-deploy/mrsec-eoh-deploy/index.html\")",
       "Bash(python -)",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "WebFetch(domain:mrsec.illinois.edu)"
     ]
   }
 }
